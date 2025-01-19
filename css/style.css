@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+html {
+    --annotation-title-font-size: 15px;
+    --annotation-label-font-size: 13px;
+}
+
+/************* general *************/
+
+body {
+    font-weight: 400;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 16px;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.outer-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1600px;
+    /* padding-left: 20px; */
+    /* padding-right: 20px; */
+}
+
+
+.purple {
+    color: #5C1EFB;
+}
+
+
+
+/************* title & top *************/
+
+#intro-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1400px;
+    width: calc(100% - 80px);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+#ccs-logo {
+    opacity: 0.8;
+    position: absolute;
+    top: -190px;
+    left: -130px;
+    z-index: -1;
+    max-width: 550px;
+}
+
+#title-container {
+    position: relative;
+    width: 50%;
+}
+
+#title {
+    padding-left: 30px;
+    padding-right: 20px;
+}
+
+#main-title {
+    font-family: Barlow;
+    font-size: 50px;
+    color: #5C1EFB;
+    mix-blend-mode: multiply;
+    font-weight: 700;
+}
+
+#sub-title {
+    font-size: 23px;
+    color: black;
+    letter-spacing: 1.1px;
+    padding-top: 60px;
+    mix-blend-mode: multiply;
+}
+
+#intro {
+    width: 46%;
+    padding-top: 60px;
+}
+
+.intro-text {
+    line-height: 1.6em;
+    font-size: 18px;
+    font-family: 'Barlow', sans-serif;
+}
+
+
+/************* media queries *************/
+
+@media screen and (max-width: 1450px) {
+    #main-title {
+        font-size: 46px;
+    }
+    #sub-title {
+        font-size: 19px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    #title-container,
+    #intro,
+    #explanation,
+    #circle-layer-explanation,
+    #circle-layer-explanation,
+    #layer-legend {
+        width: 100%;
+    }
+    #intro-container {
+        width: calc(100% - 80px);
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+    #title {
+        padding-left: 0px;
+    }
+    #title-container {
+        padding-top: 70px;
+    }
+    #main-title {
+        font-size: 46px;
+    }
+    #sub-title {
+        font-size: 22px;
+    }
+    #ccs-logo {
+        top: -100px;
+        left: -120px;
+        width: calc(100% + 120px);
+        max-width: 500px;
+    }
+    #intro {
+        padding-top: 30px;
+    }
+    #annotation-explanation {
+        width: 70%;
+    }
+    #layer-legend {
+        max-width: 450px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .issue-text,
+    .manga-img,
+    #story-intro-text,
+    #read-more-button {
+        width: 100%;
+    }
+    .issue-group {
+        padding-bottom: 30px;
+    }
+    .issue-group:last-child {
+        padding-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #main-title {
+        font-size: 37px;
+    }
+    #sub-title {
+        font-size: 16px;
+    }
+    #intro-container {
+        margin-bottom: 0px;
+    }
+    .explanation {
+        width: 100%;
+        text-align: left;
+    }
+    #issue-intro,
+    #intro-container,
+    #visual-explanation-container,
+    #story-intro,
+    .divider-line {
+        width: calc(100% - 20px);
+    }
+    .manga-mobile-img {
+        transform: translateX(-40px);
+    }
+}
+
+/************* chart *************/
+
+#chart-container {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+
+@media screen and (max-width: 400px) {
+    #chart-container {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+#chart {
+    position: relative;
+}
+
+#chart svg {
+    font-family: Barlow;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: visible;
+}
+
+canvas {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.name-label {}
+
+.last-name-label {
+    fill: #b9b9b9;
+}
+
+.country-number {
+    fill: #6d6d6d;
+}
+
+.card-label {
+    cursor: default;
+    pointer-events: none;
+}
+
+.card-legend {
+    fill: #a1a1a1;
+}
+
+.continent-arc {
+    fill: none;
+    stroke-linecap: round;
+}
+
+.annotation-group {
+    pointer-events: none;
+}
+
+.annotation-note-title {
+    font-size: 14px;
+    font-size: var(--annotation-title-font-size);
+    font-weight: 400;
+}
+
+.annotation-note-label {
+    font-size: 13px;
+    font-size: var(--annotation-label-font-size);
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.annotation-circle {
+    fill: none;
+    stroke-dasharray: 0, 5;
+    stroke-linecap: round;
+}
+
+
+
+a,
+a:link,
+a:visited,
+a:active {
+    color: #eb547f;
+    border-bottom: 1px dotted rgba(235, 84, 127, 0.5);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid #eb547f;
+}

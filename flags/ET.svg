@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="720" height="360" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <rect width="720" height="360" fill="#da121a"/>
+ <rect width="720" height="240" fill="#fcdd09"/>
+ <rect width="720" height="120" fill="#078930"/>
+ <g transform="translate(360,180)">
+  <circle r="120" fill="#0f47af"/>
+  <g id="t">
+   <path d="m0-96-4.2058 12.944 17.347 53.39h-23.129l-2.5994 8h74.163l11.011-8h-51.034z" fill="#fcdd09"/>
+   <path transform="rotate(216)" d="m0 44v52" stroke="#fcdd09" stroke-width="4"/>
+  </g>
+  <use transform="rotate(72)" xlink:href="#t"/>
+  <use transform="rotate(144)" xlink:href="#t"/>
+  <use transform="rotate(216)" xlink:href="#t"/>
+  <use transform="rotate(288)" xlink:href="#t"/>
+ </g>
+</svg>

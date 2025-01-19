@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" version="1.0" viewBox="-60 -40 120 80" xmlns="http://www.w3.org/2000/svg">
+ <g fill="#e70013">
+  <rect x="-60" y="-40" width="120" height="80"/>
+  <circle r="20" fill="#fff"/>
+  <circle r="15"/>
+  <circle cx="4" r="12" fill="#fff"/>
+  <path transform="translate(4)scale(9)rotate(-90)" d="m0-1 0.58779 1.809-1.5388-1.118h1.9021l-1.5388 1.118z"/>
+ </g>
+</svg>

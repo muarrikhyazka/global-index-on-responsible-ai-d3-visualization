@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="600" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <clipPath id="c">
+  <!-- Inner circle of crescent shifted right from center by 5*sqrt(3)-sqrt(39) = 2.415256 -->
+  <path d="m0 0h60v40h-60zm32.415 28a8 8 0 1 0 0-16 8 8 0 1 0 0 16"/>
+ </clipPath>
+ <path d="M0,0H60V40H0z" fill="#fff"/>
+ <path d="M0,0H30V40H0z" fill="#006233"/>
+ <g fill="#d21034">
+  <circle cx="30" cy="20" r="10" clip-path="url(#c)"/>
+  <!-- Distance between center of star and center of flag is 5*cos(36 deg) = 4.045085 -->
+  <g transform="translate(34.045 20)">
+   <g id="f">
+    <g id="t">
+     <path id="o" transform="rotate(18,5,0)" d="M5,0H0V3z"/>
+     <use transform="scale(1,-1)" xlink:href="#o"/>
+    </g>
+    <use transform="rotate(72)" xlink:href="#t"/>
+   </g>
+   <use transform="rotate(-72)" xlink:href="#t"/>
+   <use transform="rotate(144)" xlink:href="#f"/>
+  </g>
+ </g>
+</svg>

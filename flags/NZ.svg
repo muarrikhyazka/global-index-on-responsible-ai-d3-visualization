@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width="1200" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <clipPath id="Canton">
+   <path d="m0 0h600v300h-600z"/>
+  </clipPath>
+  <clipPath id="Diagonals">
+   <path d="m0 0 300 150h-300zm300 0h300l-300 150zm0 150h300v150zm0 0v150h-300z"/>
+  </clipPath>
+  <g id="Pentagram">
+   <g id="Arm" transform="translate(0 -.32492)">
+    <path d="m0 0v0.5l1-0.5z"/>
+    <path transform="rotate(-36,1,0)" d="m0 0v-0.5l1 0.5z"/>
+   </g>
+   <use transform="scale(-1,1)" xlink:href="#Arm"/>
+   <use transform="rotate(72)" xlink:href="#Arm"/>
+   <use transform="rotate(-72)" xlink:href="#Arm"/>
+   <use transform="rotate(-72) scale(-1 1)" xlink:href="#Arm"/>
+  </g>
+ </defs>
+ <rect width="1200" height="600" fill="#00247d"/>
+ <g id="Flag_of_the_United_Kingdom">
+  <path id="Saint_Andrews_Cross" d="m0 0 600 300m-600 0 600-300" clip-path="url(#Canton)" stroke="#fff" stroke-width="60"/>
+  <path id="Saint_Patricks_Cross" d="m0 0 600 300m-600 0 600-300" clip-path="url(#Diagonals)" stroke="#cc142b" stroke-width="40"/>
+  <g id="Saint_Georges_Cross">
+   <path d="m300 0v300m-300-150h600" clip-path="url(#Canton)" stroke="#fff" stroke-width="100"/>
+   <path d="m300 0v300m-300-150h600" clip-path="url(#Canton)" stroke="#cc142b" stroke-width="60"/>
+  </g>
+ </g>
+ <g id="Southern_Cross">
+  <g id="Gamma_Crucis">
+   <use transform="translate(900,120) scale(45.4)" fill="#ffffff" xlink:href="#Pentagram"/>
+   <use transform="translate(900,120) scale(30)" fill="#cc142b" xlink:href="#Pentagram"/>
+  </g>
+  <g transform="rotate(82,900,240)">
+   <g id="Delta_Crucis">
+    <use transform="translate(900,120) rotate(-82) scale(40.4)" fill="#ffffff" xlink:href="#Pentagram"/>
+    <use transform="translate(900,120) rotate(-82) scale(25)" fill="#cc142b" xlink:href="#Pentagram"/>
+   </g>
+   <g id="Beta_Crucis">
+    <use transform="translate(900,380) rotate(-82) scale(45.4)" fill="#ffffff" xlink:href="#Pentagram"/>
+    <use transform="translate(900,380) rotate(-82) scale(30)" fill="#cc142b" xlink:href="#Pentagram"/>
+   </g>
+  </g>
+  <g id="Alpha_Crucis">
+   <use transform="translate(900,480) scale(50.4)" fill="#ffffff" xlink:href="#Pentagram"/>
+   <use transform="translate(900,480) scale(35)" fill="#cc142b" xlink:href="#Pentagram"/>
+  </g>
+ </g>
+</svg>

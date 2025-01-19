@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1e3" height="500" viewBox="0 0 72 36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <rect width="72" height="36" fill="#0073cf"/>
+ <rect y="12" width="72" height="12" fill="#fff"/>
+ <g id="star" transform="translate(36,18) scale(2)" fill="#0073cf">
+  <g id="cone">
+   <polygon id="triangle" transform="translate(0,-1) rotate(18)" points="0 0 0 1 0.5 1"/>
+   <use id="use12" transform="scale(-1,1)" xlink:href="#triangle"/>
+  </g>
+  <use id="use14" transform="rotate(72)" xlink:href="#cone"/>
+  <use id="use16" transform="rotate(-72)" xlink:href="#cone"/>
+  <use id="use18" transform="rotate(144)" xlink:href="#cone"/>
+  <use id="use20" transform="rotate(216)" xlink:href="#cone"/>
+ </g>
+ <use transform="translate(10,-3.2)" xlink:href="#star"/>
+ <use transform="translate(10,2.8)" xlink:href="#star"/>
+ <use transform="translate(-10,-3.2)" xlink:href="#star"/>
+ <use transform="translate(-10,2.8)" xlink:href="#star"/>
+</svg>

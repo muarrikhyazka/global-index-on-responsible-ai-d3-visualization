@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2800" height="1400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <rect id="red" width="2800" height="1400" fill="#cc0001"/>
+ <rect id="white" y="1300" width="2800" height="100" fill="#fff"/>
+ <use id="use3035" transform="translate(0,-200)" xlink:href="#white"/>
+ <use id="use3038" transform="translate(0,-400)" xlink:href="#white"/>
+ <use id="use3062" transform="translate(0,-600)" xlink:href="#white"/>
+ <use id="use3064" transform="translate(0,-800)" xlink:href="#white"/>
+ <use id="use3066" transform="translate(0 -1e3)" xlink:href="#white"/>
+ <use id="use3068" transform="translate(0,-1200)" xlink:href="#white"/>
+ <rect id="blue" width="1400" height="800" fill="#010066"/>
+ <path id="path4945" d="m576 100c-166.15 0-301 134.41-301 300 0 165.59 134.85 300 301 300 60.027 0 115.95-17.564 162.93-47.783-27.353 9.4395-56.709 14.602-87.271 14.602-147.33 1e-5 -266.9-119.17-266.9-266.01s119.57-266.01 266.9-266.01c32.558 0 63.746 5.8148 92.602 16.467-48.041-32.357-105.95-51.267-168.26-51.267z" fill="#fc0"/>
+ <path id="path4959" transform="matrix(1.2738 0 0 1.2423 -89.443 -29.478)" d="m914.29 471.43-99.538-53.251 29.43 108.98-66.576-91.165-20.77 110.96-20.428-111.02-66.857 90.959 29.766-108.89-99.701 52.943 74.065-85.193-112.8 4.4414 103.69-44.62-103.56-44.94 112.78 4.7893-73.801-85.421 99.538 53.251-29.43-108.98 66.576 91.165 20.77-110.96 20.428 111.02 66.857-90.959-29.766 108.89 99.701-52.943-74.065 85.193 112.8-4.4414-103.69 44.62 103.56 44.94-112.78-4.7893z" fill="#fc0"/>
+</svg>
