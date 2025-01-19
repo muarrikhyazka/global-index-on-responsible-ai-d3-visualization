@@ -1302,7 +1302,9 @@ function create_GIRAI_chart() {
         ctx.scale(sf, sf);
     } //function crispyCanvas
 
-  
+
+
+} //function create_GIRAI_chart
 
 //////////////////////////////////////////////////////////////
 ////////////////////// Helper functions //////////////////////
