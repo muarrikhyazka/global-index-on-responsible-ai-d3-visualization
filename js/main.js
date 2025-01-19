@@ -68,23 +68,23 @@ function create_GIRAI_chart() {
     //Update the sizes of the images in the introduction
     if (ww > 900) {
         //Adjust the sizes of the images in the intro
-        for (var i = 1; i <= 2; i++) {
-            var par_height = document.getElementById("issue-text-" + i).getBoundingClientRect().height;
-            var div_width = document.getElementById("issue-intro").getBoundingClientRect().width;
-            if (total_chart_width > ww) var width_left = (parseInt(document.body.style.width) - div_width) / 2;
-            else var width_left = (window.innerWidth - div_width) / 2 - 10;
+        // for (var i = 1; i <= 2; i++) {
+        //     var par_height = document.getElementById("issue-text-" + i).getBoundingClientRect().height;
+        //     var div_width = document.getElementById("issue-intro").getBoundingClientRect().width;
+        //     if (total_chart_width > ww) var width_left = (parseInt(document.body.style.width) - div_width) / 2;
+        //     else var width_left = (window.innerWidth - div_width) / 2 - 10;
 
-            var max_width = par_height * 1.99;
-            var window_based_width = div_width * 0.48 + width_left;
-            if (window_based_width > max_width) par_height = window_based_width / 1.99;
+        //     var max_width = par_height * 1.99;
+        //     var window_based_width = div_width * 0.48 + width_left;
+        //     if (window_based_width > max_width) par_height = window_based_width / 1.99;
 
-            d3.select("#manga-img-" + i)
-                .style("height", par_height + "px")
-                .style("width", Math.min(par_height * 1.99, window_based_width) + "px") //width img = 45%
-                .style("display", "block");
+        //     d3.select("#manga-img-" + i)
+        //         .style("height", par_height + "px")
+        //         .style("width", Math.min(par_height * 1.99, window_based_width) + "px") //width img = 45%
+        //         .style("display", "block");
 
-            d3.select("#issue-group-" + i).style("height", par_height + "px");
-        } //for i
+        //     d3.select("#issue-group-" + i).style("height", par_height + "px");
+        // } //for i
         d3.selectAll(".manga-mobile-img").style("display", "hidden");
     } else {
         d3.selectAll(".manga-mobile-img").style("display", "block");
