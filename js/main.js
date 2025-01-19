@@ -922,8 +922,8 @@ function create_GIRAI_chart() {
             updateCentralLabel(issue_total_data[d.issue-1].full_name);
 
             
-            mainText.style("font-size", (25 * size_factor) + "px");
-            mainSecondText.style("font-size", (25 * size_factor) + "px");
+            mainText.style("font-size", (25 * size_factor) + "px").style("fill", issue_total_data[d.issue-1].color);
+            mainSecondText.style("font-size", (25 * size_factor) + "px").style("fill", issue_total_data[d.issue-1].color);
             secondText.text(issue_total_data[d.issue-1].num_countries + ' Countries');
             thirdText.text("Issue no. " + d.issue);
 
@@ -1163,7 +1163,7 @@ function create_GIRAI_chart() {
             .attr("startOffset", "50%") // Center text along the path
             .style("text-anchor", "middle")
             .style("font-size", (12 * size_factor) + "px")
-            .style("color", function(d) {
+            .style("fill", function(d) {
                 return d.color;
             })
             .text(function(d, i) {
@@ -1374,6 +1374,8 @@ function create_GIRAI_chart() {
 
             updateCentralLabel(country_data[i].CountryName);
             // mainText.text(country_data[i].CountryName);
+            mainText.style("font-size", (25 * size_factor) + "px").style("fill", issue_total_data[d.issue-1].color);
+            mainSecondText.style("font-size", (25 * size_factor) + "px").style("fill", issue_total_data[d.issue-1].color);
             secondText.text('Index Score : ' + country_data[i].IndexScore);
             thirdText.text("Ranking " + Number(country_data[i].Ranking));
 
