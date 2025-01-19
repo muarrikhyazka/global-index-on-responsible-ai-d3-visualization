@@ -65,31 +65,7 @@ function create_GIRAI_chart() {
     var outer_container_width = Math.min(base_width, ww - no_scrollbar_padding - 2 * 20); //2 * 20px padding
     d3.selectAll(".outer-container").style("width", outer_container_width + "px");
 
-    //Update the sizes of the images in the introduction
-    if (ww > 900) {
-        //Adjust the sizes of the images in the intro
-        // for (var i = 1; i <= 2; i++) {
-        //     var par_height = document.getElementById("issue-text-" + i).getBoundingClientRect().height;
-        //     var div_width = document.getElementById("issue-intro").getBoundingClientRect().width;
-        //     if (total_chart_width > ww) var width_left = (parseInt(document.body.style.width) - div_width) / 2;
-        //     else var width_left = (window.innerWidth - div_width) / 2 - 10;
-
-        //     var max_width = par_height * 1.99;
-        //     var window_based_width = div_width * 0.48 + width_left;
-        //     if (window_based_width > max_width) par_height = window_based_width / 1.99;
-
-        //     d3.select("#manga-img-" + i)
-        //         .style("height", par_height + "px")
-        //         .style("width", Math.min(par_height * 1.99, window_based_width) + "px") //width img = 45%
-        //         .style("display", "block");
-
-        //     d3.select("#issue-group-" + i).style("height", par_height + "px");
-        // } //for i
-        d3.selectAll(".manga-mobile-img").style("display", "hidden");
-    } else {
-        d3.selectAll(".manga-mobile-img").style("display", "block");
-        d3.selectAll(".manga-img").style("display", "hidden");
-    } //else
+  
 
     //Do the read-more button
     d3.selectAll(".read-more").style("display", "none");
@@ -221,10 +197,6 @@ function create_GIRAI_chart() {
         .domain([0, 1])
         .range([0, 20]);
 
-    ///////////////////////////////////////////////////////////////////////////
-    ///////////////////////////// Create groups ///////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////
-
 
     ///////////////////////////////////////////////////////////////////////////
     //////////////////////////// Read in the data /////////////////////////////
@@ -313,74 +285,10 @@ function create_GIRAI_chart() {
         }) //forEach
 
 
-        ///////////////////////////////////////////////////////////////////////////
-        /////////////////////////// Run force simulation //////////////////////////
-        ///////////////////////////////////////////////////////////////////////////   
-
-        // simulation = d3.forceSimulation(color_data)
-        //     .force("x", d3.forceX().x(function(d) {
-        //         return d.focusX;
-        //     }).strength(0.05))
-        //     .force("y", d3.forceY().y(function(d) {
-        //         return d.focusY;
-        //     }).strength(0.05))
-        //     .force("collide", d3.forceCollide(function(d) {
-        //         return (d.radius * 1 + 2.5) * size_factor;
-        //     }).strength(0))
-        //     .on("tick", tick)
-        //     .on("end", simulation_end)
-        //     .alphaMin(.2)
-        //.stop();
-
-        //Run the simulation "manually"
-        //for (var i = 0; i < 300; ++i) simulation.tick();
-
-        //Ramp up collision strength to provide smooth transition
-        // var t = d3.timer(function(elapsed) {
-        //     var dt = elapsed / 3000;
-        //     simulation.force("collide").strength(Math.pow(dt, 2) * 0.7);
-        //     if (dt >= 1.0) t.stop();
-        // });
-
-        // function tick(e) {
-        //     color_circle
-        //         .attr("cx", function(d) {
-        //             return d.x;
-        //         })
-        //         .attr("cy", function(d) {
-        //             return d.y;
-        //         })
-        // } //function tick
-
-        //When the simulation is done, run this function
-        // function simulation_end() {
-        //     //Create the CMYK halftones
-        //     color_circle.style("fill", function(d, i) {
-        //         return "url(#pattern-total-" + i + ")";
-        //     })
-        // } //function simulation_end
+  
 
         data_save = country_data; //So I save the final positions
 
-        //////////////////////////////////////////////////////////////
-        /////////////// Create circle for cover image ////////////////
-        //////////////////////////////////////////////////////////////
-
-        //Adding images of the issues
-        // var image_radius = rad_image;
-        // var image_group = defs.append("g").attr("class", "image-group");
-        // //Had to add img width otherwise it wouldn't work in Safari & Firefox
-        // //http://stackoverflow.com/questions/36390962/svg-image-tag-not-working-in-safari-and-firefox
-        // var cover_image = image_group.append("pattern")
-        //     .attr("id", "cover-image")
-        //     .attr("class", "cover-image")
-        //     .attr("patternUnits", "objectBoundingBox")
-        //     .attr("height", "100%")
-        //     .attr("width", "100%")
-        //     .append("image")
-        //     .attr("xlink:href", "img/white-square.jpg")
-        //     .attr("height", 2 * image_radius)
-        //     .attr("width", 2 * image_radius);
 
         //////////////////////////////////////////////////////////////
         /////////////// Create text in center of chart ////////////////
@@ -460,39 +368,7 @@ function create_GIRAI_chart() {
         }
         
 
-        // Add the smaller last name below the main name along the same arc
-        // center_names.append("text")
-        //     .attr("class", "center-last-name-label")
-        //     .attr("id", "center-last-name-label")
-        //     .attr("dy", "0.5em")  // Adjust vertical offset for the last name
-        //     .append("textPath")
-        //     .attr("startOffset", "50%") // Center text along the path
-        //     .style("text-anchor", "middle")
-        //     .style("font-size", (12 * size_factor) + "px")
-        //     .text(function(d, i) {
-        //         return issue_total_data[i].last_name;
-        //     });
-
-        //Set up the annotation
-            // var annotations_relationship = [{
-            //     note: {
-            //         label: d.note,
-            //         title: capitalizeFirstLetter(d.type),
-            //         wrap: 150 * size_factor,
-            //     },
-            //     relation_type: "family",
-            //     x: +d.x * size_factor,
-            //     y: +d.y * size_factor,
-            //     dx: 5 * size_factor,
-            //     dy: -5 * size_factor
-            // }];
-
-            // //Set-up the annotation maker
-            // var makeAnnotationsRelationship = d3.annotation()
-            //     // .editMode(true)
-            //     .type(d3.annotationLabel)
-            //     .annotations(annotations_relationship);
-            // annotation_relation_group.call(makeAnnotationsRelationship);
+       
 
 
         ///////////////////////////////////////////////////////////////////////////
@@ -529,101 +405,12 @@ function create_GIRAI_chart() {
                 return d.data.color;
             });
 
-        // var sub_arc = d3.arc()
-        //     .outerRadius(rad_sub_donut_outer)
-        //     .innerRadius(rad_sub_donut_inner)
-        //     .padAngle(0.01)
-        //     .cornerRadius((rad_sub_donut_outer - rad_sub_donut_inner) / 2 * 1)
-        
-        // var sub_pie = d3.pie()
-        //     .sort(null)
-        //     .value(function(d) {
-        //         return d.num_countries;
-        //     });
-
-        // var sub_arcs = sub_pie(issue_total_data);
-        // sub_arcs.forEach(function(d, i) {
-        //     d.issue = issue_total_data[i].issue;
-        //     d.centerAngle = (d.endAngle - d.startAngle) / 2 + d.startAngle;
-        // });
-
-        // //Create the donut slices per issue (and the number of countries they appeared in)
-        // var sub_donut_group = chart.append("g").attr("class", "sub-donut-group");
-        // var sub_slice = sub_donut_group.selectAll(".sub_arc")
-        //     .data(sub_arcs)
-        //     .enter().append("path")
-        //     .attr("class", "sub_arc")
-        //     .attr("d", sub_arc)
-        //     .style("fill", function(d) {
-        //         return d.data.color;
-        //     });
+   
 
         ///////////////////////////////////////////////////////////////////////////
         ///////////////////////////// Create name labels //////////////////////////
         /////////////////////////////////////////////////////////////////////////// 
-        // var hover_circle_group = chart.append("g").attr("class", "hover-circle-group");
-        // var name_group = chart.append("g").attr("class", "name-group");
-        
-        // var names_arc = name_group.selectAll(".text-arc")
-        //     .data(arcs)
-        //     .enter().append("path")
-        //     .attr("class", "text-arc")
-        //     .attr("id", function(d, i) {
-        //         return "text-arc-" + i;
-        //     })
-        //     .attr("d", function(d) {
-        //         var arc = d3.arc()
-        //             .innerRadius(rad_donut_outer+10)
-        //             .outerRadius(rad_donut_inner)
-        //             .startAngle(d.startAngle-4)
-        //             .endAngle(d.endAngle);
-        //         return arc();
-        //     })
-        //     .style("fill", "none")
-        //     .style("stroke", "none");  // Ensure the path is invisible
-
-        // var names = name_group.selectAll(".name")
-        //     .data(arcs)
-        //     .enter().append("g")
-        //     .attr("class", "name")
-        //     .style("text-anchor", function(d) {
-        //         return d.centerAngle > 0 & d.centerAngle < Math.PI ? "start" : "end";;
-        //     })
-        //     .style("font-family", "Anime Ace")
-
-        // // Add the big "main" name along the arc
-        // names.append("text")
-        //     .attr("class", "name-label")
-        //     .attr("id", function(d, i) {
-        //         return "name-label-" + i;
-        //     })
-        //     .append("textPath")
-        //     .attr("href", function(d, i) {
-        //         return "#text-arc-" + i;
-        //     })
-        //     .attr("startOffset", "50%") // Center text along the path
-        //     .style("text-anchor", "middle")
-        //     .style("font-size", (12 * size_factor) + "px")
-        //     .text(function(d, i) {
-        //         return issue_total_data[i].first_name;
-        //     });
-
-       
-
-        // // Add the smaller last name below the main name along the same arc
-        // names.append("text")
-        //     .attr("class", "last-name-label")
-        //     .append("textPath")
-        //     .attr("href", function(d, i) {
-        //         return "#text-arc-" + i;
-        //     })
-        //     .attr("startOffset", "50%") // Center text along the path
-        //     .attr("dy", "1.2em")  // Adjust vertical offset for the last name
-        //     .style("text-anchor", "middle")
-        //     .style("font-size", (9 * size_factor) + "px")
-        //     .text(function(d, i) {
-        //         return issue_total_data[i].last_name;
-        //     });
+    
 
         var hover_circle_group = chart.append("g").attr("class", "hover-circle-group");
         var name_group = chart.append("g").attr("class", "name-group");
@@ -748,123 +535,6 @@ function create_GIRAI_chart() {
             .style("stroke", "white")
             .style("stroke-width", 3 * size_factor);
 
-        ///////////////////////////////////////////////////////////////////////////
-        ////////////////////////// Create inner relations /////////////////////////
-        /////////////////////////////////////////////////////////////////////////// 
-
-        // var pull_scale = d3.scaleLinear()
-        //     .domain([2 * rad_relation, 0])
-        //     .range([0.7, 2.3]);
-        // var color_relation = d3.scaleOrdinal()
-        //     .domain(["family", "crush", "love", "friends", "master"]) //"teacher","ex-lovers","reincarnation","rival"
-        //     .range(["#2C9AC6", "#FA88A8", "#E01A25", "#7EB852", "#F6B42B"])
-        //     .unknown("#bbbbbb");
-        // var stroke_relation = d3.scaleOrdinal()
-        //     .domain(["family", "crush", "love", "friends", "master"]) //"teacher","ex-lovers","reincarnation","rival"
-        //     .range([4, 5, 8, 4, 5])
-        //     .unknown(3);
-
-        // var relation_group = chart.append("g").attr("class", "relation-group");
-
-        // //Create the lines in between the issues that have some sort of relation
-        // var relation_lines = relation_group.selectAll(".relation-path")
-        //     .data(relation_data)
-        //     .enter().append("path")
-        //     .attr("class", "relation-path")
-        //     .style("fill", "none")
-        //     .style("stroke", function(d) {
-        //         return color_relation(d.type);
-        //     })
-        //     .style("stroke-width", function(d) {
-        //         return stroke_relation(d.type) * size_factor;
-        //     })
-        //     .style("stroke-linecap", "round")
-        //     .style("mix-blend-mode", "multiply")
-        //     .style("opacity", 0.7)
-        //     .attr("d", create_relation_lines);
-
-        // function create_relation_lines(d) {
-        //     var source_a = issueByName[d.source].name_angle,
-        //         target_a = issueByName[d.target].name_angle;
-        //     var x1 = rad_relation * Math.cos(source_a - pi1_2),
-        //         y1 = rad_relation * Math.sin(source_a - pi1_2),
-        //         x2 = rad_relation * Math.cos(target_a - pi1_2),
-        //         y2 = rad_relation * Math.sin(target_a - pi1_2);
-        //     var dx = x2 - x1,
-        //         dy = y2 - y1,
-        //         dr = Math.sqrt(dx * dx + dy * dy);
-        //     var curve = dr * 1 / pull_scale(dr);
-
-        //     //Get the angles to determine the optimum sweep flag
-        //     var delta_angle = (target_a - source_a) / Math.PI;
-        //     var sweep_flag = 0;
-        //     if ((delta_angle > -1 && delta_angle <= 0) || (delta_angle > 1 && delta_angle <= 2))
-        //         sweep_flag = 1;
-
-        //     return "M" + x1 + "," + y1 + " A" + curve + "," + curve + " 0 0 " + sweep_flag + " " + x2 + "," + y2;
-        // } //function create_relation_lines
-
-        ///////////////////////////////////////////////////////////////////////////
-        ///////////////////// Create inner relation hover areas ///////////////////
-        /////////////////////////////////////////////////////////////////////////// 
-
-        // var relation_hover_group = chart.append("g").attr("class", "relation-hover-group");
-        // var relation_hover_lines = relation_hover_group.selectAll(".relation-hover-path")
-        //     .data(relation_data)
-        //     .enter().append("path")
-        //     .attr("class", "relation-hover-path")
-        //     .style("fill", "none")
-        //     .style("stroke", "white")
-        //     .style("stroke-width", 16 * size_factor)
-        //     .style("opacity", 0)
-        //     // .style("pointer-events", "all")
-        //     .attr("d", create_relation_lines)
-        //     .on("mouseover", mouse_over_relation)
-        //     .on("mouseout", mouse_out)
-
-        // //Call and create the textual part of the annotations
-        // var annotation_relation_group = chart.append("g").attr("class", "annotation-relation-group");
-
-        // function mouse_over_relation(d, i) {
-        //     d3.event.stopPropagation();
-        //     mouse_over_in_action = true;
-
-        //     clearTimeout(remove_text_timer);
-
-        //     //Only show the hovered relationship
-        //     relation_lines.filter(function(c, j) {
-        //             return j !== i;
-        //         })
-        //         .style("opacity", 0.05);
-
-        //     //Set up the annotation
-        //     var annotations_relationship = [{
-        //         note: {
-        //             label: d.note,
-        //             title: capitalizeFirstLetter(d.type),
-        //             wrap: 150 * size_factor,
-        //         },
-        //         relation_type: "family",
-        //         x: +d.x * size_factor,
-        //         y: +d.y * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }];
-
-        //     //Set-up the annotation maker
-        //     var makeAnnotationsRelationship = d3.annotation()
-        //         // .editMode(true)
-        //         .type(d3.annotationLabel)
-        //         .annotations(annotations_relationship);
-        //     annotation_relation_group.call(makeAnnotationsRelationship);
-
-        //     //Update a few stylings
-        //     annotation_relation_group.selectAll(".note-line, .connector")
-        //         .style("stroke", "none");
-        //     annotation_relation_group.select(".annotation-note-title")
-        //         .style("fill", color_relation(d.type) === "#bbbbbb" ? "#9e9e9e" : color_relation(d.type));
-
-        // } //function mouse_over_relation
 
         ///////////////////////////////////////////////////////////////////////////
         //////////////////////// Create cover country circle //////////////////////
@@ -1117,140 +787,9 @@ function create_GIRAI_chart() {
                 return "M" + xs + "," + ys + " A" + rad + "," + rad + " 0 0 1 " + xt + "," + yt;
             });
 
-        var continent_name_group = chart.append("g").attr("class", "continent-name-group");
         
-        var continent_names_arc = continent_name_group.selectAll(".continent-text-arc")
-            .data(continent_data)
-            .enter().append("path")
-            .attr("class", "continent-text-arc")
-            .attr("id", function(d, i) {
-                return "continent-text-arc-" + i;
-            })
-            .attr("d", function(d, i) {
-                var rad = rad_continent_inner + 5 * size_factor,
-                    xs = rad * Math.cos(d.startAngle - pi1_2),
-                    ys = rad * Math.sin(d.startAngle - pi1_2),
-                    xt = rad * Math.cos(d.endAngle - pi1_2),
-                    yt = rad * Math.sin(d.endAngle - pi1_2)
-                return "M" + xs + "," + ys + " A" + rad + "," + rad + " 0 0 1 " + xt + "," + yt;
-            })
-            .style("fill", "none")
-            .style("stroke", "none");  // Ensure the path is invisible
 
-        //Create a group per character
-        var continent_names = continent_name_group.selectAll(".continent-name")
-            .data(continent_data)
-            .enter().append("g")
-            .attr("class", "continent-name")
-            .style("text-anchor", function(d) {
-                return d.centerAngle > 0 & d.centerAngle < Math.PI ? "start" : "end";;
-            })
-            .style("font-family", "Barlow")
-            .style("color", function(d) {
-                return d.color;
-            })
-
-        // // Add the big "main" name along the arc
-        continent_names.append("text")
-            .attr("class", "continent-name-label")
-            .attr("id", function(d, i) {
-                return "continent-name-label-" + i;
-            })
-            .append("textPath")
-            .attr("href", function(d, i) {
-                return "#continent-text-arc-" + i;
-            })
-            .attr("startOffset", "50%") // Center text along the path
-            .style("text-anchor", "middle")
-            .style("font-size", (12 * size_factor) + "px")
-            .style("fill", function(d) {
-                return d.color;
-            })
-            .text(function(d, i) {
-                return continent_identity_data[i].continent_name;
-            });
-
-        ///////////////////////////////////////////////////////////////////////////
-        ///////////////////// Create hidden country hover areas ///////////////////
-        /////////////////////////////////////////////////////////////////////////// 
-
-        // var arc_country_hover = d3.arc()
-        //     .outerRadius(rad_country_outer)
-        //     .innerRadius(rad_country_inner);
-
-        // //Create the donut slices per country
-        // var country_hover_group = chart.append("g").attr("class", "country-hover-group");
-        // var country_hover = country_hover_group.selectAll(".country-hover-arc")
-        //     .data(country_location_data)
-        //     .enter().append("path")
-        //     .attr("class", "country-hover-arc")
-        //     .attr("d", arc_country_hover)
-        //     .style("fill", "none")
-        //     .style("pointer-events", "all")
-        //     .on("mouseover", mouse_over_country)
-        //     .on("mouseout", mouse_out);
-
-        // //When you mouse over a country arc
-        // function mouse_over_country(d, i) {
-        //     d3.event.stopPropagation();
-        //     mouse_over_in_action = true;
-
-        //     ctx.clearRect(-width / 2, -height / 2, width, height);
-        //     ctx.lineWidth = 4 * size_factor;
-        //     ctx.globalAlpha = 1;
-        //     create_lines("country", issue_data.filter(function(c) {
-        //         return c.country === i + 1;
-        //     }));
-
-        //     //Update label path
-        //     line_label_path.attr("d", label_arc(d.centerAngle));
-        //     //Update the label text
-        //     clearTimeout(remove_text_timer);
-        //     line_label.text("issues that appear in country " + (i + 1));
-
-        //     mainText.text(country_data[i].CountryName);
-        //     secondText.text(country_data[i].CountryName + ' Countries');
-        //     thirdText.text("Issue no. " + country_data[i].CountryName);
-
-        //     //Highlight the issues that appear in this country
-        //     var char_countries = issue_data
-        //         .filter(function(c) {
-        //             return c.country === i + 1;
-        //         })
-        //         .map(function(c) {
-        //             return c.issue;
-        //         });
-
-        //     names.filter(function(c) {
-        //             return char_countries.indexOf(c.issue) < 0;
-        //         })
-        //         .style("opacity", 0.2);
-        //     name_dot.filter(function(c) {
-        //             return char_countries.indexOf(c.issue) < 0;
-        //         })
-        //         .style("opacity", 0.2);
-
-        //     //Highlight the country donut slice
-        //     country_hover_slice.filter(function(c, j) {
-        //             return i === j;
-        //         })
-        //         .style("fill", color_purple)
-        //         .style("stroke", color_purple);
-        //     country_number.filter(function(c, j) {
-        //             return i === j;
-        //         })
-        //         .style("fill", "white");
-        //     country_dot.filter(function(c, j) {
-        //             return i === j;
-        //         })
-        //         .attr("r", country_dot_rad * 1.5)
-        //         .style("stroke-width", country_dot_rad * 0.5 * 1.5)
-        //         .style("fill", color_purple);
-
-        //     //Show the cover image in the center
-        //     // cover_image.attr("xlink:href", "img/ccs-country-" + (i + 1) + ".jpg")
-        //     cover_circle.style("fill", "url(#cover-image)");
-        // } //function mouse_over_country
+        
 
         //////////////////////////////////////////////////////////////
         ///////////////////// Create flag patterns ///////////////////
@@ -1295,24 +834,7 @@ function create_GIRAI_chart() {
             .style("fill", function(d) { return "url(#" + d.CountryCode + ")"; }) // Use CountryCode for flag pattern
             .style("stroke", function(d) { return "url(#" + d.CountryCode + ")"; })
             .style("stroke-width", 3 * size_factor);   
-        //The colored circles right after the issue names
-        // var color_group = chart.append("g").attr("class", "color-group");
-        // var color_circle = color_group.selectAll(".color-circle")
-        //         .data(country_data)
-        //         .enter()
-        //         .append("circle")
-        //         .attr("class", "color-circle")
-        //         .attr("cx", function(d) { return d.x; })
-        //         .attr("cy", function(d) { return d.y; })
-        //         .attr("r", function(d) { return d.radius * size_factor; })
-        //         .style("fill", function(d) { return "url(#" + d.CountryCode + ")"; }) // Use CountryCode for flag pattern
-        //         .style("stroke", function(d) { return "url(#" + d.CountryCode + ")"; })
-        //         .style("stroke-width", 3 * size_factor);   
-        // .call(d3.drag()
-        //     .on('start', dragstarted)
-        //     .on('drag', dragged)
-        //     .on('end', dragended)
-        // );
+        
 
         ///////////////////////////////////////////////////////////////////////////
         //////////////////////// Create hover color circle ////////////////////////
@@ -1374,8 +896,8 @@ function create_GIRAI_chart() {
 
             updateCentralLabel(country_data[i].CountryName);
             // mainText.text(country_data[i].CountryName);
-            mainText.style("font-size", (25 * size_factor) + "px").style("fill", issue_total_data[d.issue-1].color);
-            mainSecondText.style("font-size", (25 * size_factor) + "px").style("fill", issue_total_data[d.issue-1].color);
+            mainText.style("fill", country_data[i].color);
+            mainSecondText.style("fill", country_data[i].color);
             secondText.text('Index Score : ' + country_data[i].IndexScore);
             thirdText.text("Ranking " + Number(country_data[i].Ranking));
 
@@ -1537,344 +1059,7 @@ function create_GIRAI_chart() {
                 return d.country_name;
             });
 
-        //////////////////////////////////////////////////////////////
-        ///////////////// Create annotation gradients ////////////////
-        //////////////////////////////////////////////////////////////
-
-        // //Gradient for the titles of the annotations
-        // var grad = defs.append("linearGradient")
-        //     .attr("id", "gradient-title")
-        //     .attr("x1", "0%").attr("y1", "0%")
-        //     .attr("x2", "100%").attr("y2", "0%");
-        // grad.append("stop")
-        //     .attr("offset", "50%")
-        //     .attr("stop-color", color_purple);
-        // grad.append("stop")
-        //     .attr("offset", "200%")
-        //     .attr("stop-color", "#ED8B6A");
-
-        // //Gradient for the titles of the annotations
-        // var grad = defs.append("linearGradient")
-        //     .attr("id", "gradient-title-legend")
-        //     .attr("x1", "0%").attr("y1", "0%")
-        //     .attr("x2", "100%").attr("y2", "0%");
-        // grad.append("stop")
-        //     .attr("offset", "50%")
-        //     .attr("stop-color", color_white);
-        // grad.append("stop")
-        //     .attr("offset", "200%")
-        //     .attr("stop-color", "#9ABF2B");
-
-        ///////////////////////////////////////////////////////////////////////////
-        ///////////////////////////// Create annotations //////////////////////////
-        ///////////////////////////////////////////////////////////////////////////
-
-        //Only create annotations when the screen is big enough
-        // if (!width_too_small) {
-
-        //     var annotations = [{
-        //         note: {
-        //             label: "Around the right half of the large circle you can see in which country the Clow cards were captured. Sakura was already in possession of Windy and Wood at the start of country 1",
-        //             title: "Clow Cards",
-        //             wrap: 270 * size_factor,
-        //         },
-        //         country: 1,
-        //         extra_rad: 24 * size_factor,
-        //         className: "note-right note-legend",
-        //         x: 151 * size_factor,
-        //         y: -705 * size_factor,
-        //         cx: 55 * size_factor,
-        //         cy: -686 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }, {
-        //         note: {
-        //             label: "These circles reveal the main colors present in each country's cover art. The size of each circle represents the percentage of the cover image that is captured in that color. All circles from one country add up to 100%",
-        //             title: "Cover art",
-        //             wrap: 270 * size_factor,
-        //         },
-        //         country: 1,
-        //         extra_rad: 55 * size_factor,
-        //         className: "note-right note-legend",
-        //         x: 532 * size_factor,
-        //         y: -532 * size_factor,
-        //         cx: 412 * size_factor,
-        //         cy: -493 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }, {
-        //         note: {
-        //             label: "With the 10 captured cards, Kero teaches Sakura how to do a fortune-telling to get insight into which card is running around town looking like Sakura",
-        //             title: "Fortune-telling",
-        //             wrap: 205 * size_factor,
-        //         },
-        //         country: 11,
-        //         extra_rad: 30 * size_factor,
-        //         className: "note-right note-story",
-        //         x: 745 * size_factor,
-        //         y: -115 * size_factor,
-        //         cx: 612 * size_factor,
-        //         cy: -161 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }, {
-        //         note: {
-        //             label: "Sakura, Tomoyo and Syaoran are stuck in a maze, when Kaho appears and breaks the walls with her 'Moon Bell', guiding the group to the exit",
-        //             title: "Kaho's Bell",
-        //             wrap: 190 * size_factor,
-        //             padding: 10 * size_factor
-        //         },
-        //         country: 15,
-        //         extra_rad: 22 * size_factor,
-        //         className: "note-right note-story",
-        //         x: 774 * size_factor,
-        //         y: 240 * size_factor,
-        //         cx: 657 * size_factor,
-        //         cy: 170 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }, {
-        //         note: {
-        //             label: "This country is mostly Sakura and Syaoran during their school trip at the beach. While on an evening event in a cave everybody else starts to disappear",
-        //             title: "Ghost stories",
-        //             wrap: 200 * size_factor,
-        //             padding: 10 * size_factor
-        //         },
-        //         country: 17,
-        //         extra_rad: 30 * size_factor,
-        //         className: "note-right note-story",
-        //         x: 736 * size_factor,
-        //         y: 407 * size_factor,
-        //         cx: 607 * size_factor,
-        //         cy: 323 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }, {
-        //         note: {
-        //             label: "Kero can finally return to his full form after Sakura catches the Firey card",
-        //             title: "Cerberus",
-        //             wrap: 180 * size_factor,
-        //             padding: 10 * size_factor
-        //         },
-        //         country: 23,
-        //         extra_rad: 30 * size_factor,
-        //         className: "note-right note-story",
-        //         x: 256 * size_factor,
-        //         y: 780 * size_factor,
-        //         cx: 210 * size_factor,
-        //         cy: 650 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }, {
-        //         note: {
-        //             label: "After the capture of all 19 cards, Yue holds 'the final trial'. Eventually, he accepts Sakura as the new mistress of the Clow Cards",
-        //             title: "The final judge",
-        //             wrap: 220 * size_factor,
-        //             padding: 10 * size_factor
-        //         },
-        //         country: 26,
-        //         extra_rad: 60 * size_factor,
-        //         className: "note-right note-story",
-        //         x: -10 * size_factor,
-        //         y: 812 * size_factor,
-        //         cx: -26 * size_factor,
-        //         cy: 634 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }, {
-        //         note: {
-        //             label: "Around the left half of the large circle you can see in which country the Clow cards were converted to Sakura cards",
-        //             title: "Sakura Cards",
-        //             wrap: 200 * size_factor,
-        //             padding: 10 * size_factor
-        //         },
-        //         country: 29,
-        //         extra_rad: 25 * size_factor,
-        //         className: "note-left note-legend",
-        //         x: -291 * size_factor,
-        //         y: 764 * size_factor,
-        //         cx: -287 * size_factor,
-        //         cy: 624 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }, {
-        //         note: {
-        //             label: "Syaoran finally understands that it's Sakura that he loves, not Yukito",
-        //             title: "First love",
-        //             wrap: 170 * size_factor,
-        //             padding: 10 * size_factor
-        //         },
-        //         country: 31,
-        //         extra_rad: 92 * size_factor,
-        //         className: "note-left note-story",
-        //         x: -460 * size_factor,
-        //         y: 655 * size_factor,
-        //         cx: -406 * size_factor,
-        //         cy: 485 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }, {
-        //         note: {
-        //             label: "The Fly transforms to give Sakura herself wings to fly, instead of her staff",
-        //             title: "Fly",
-        //             wrap: 230 * size_factor,
-        //         },
-        //         country: 32,
-        //         extra_rad: 27 * size_factor,
-        //         className: "note-left note-story",
-        //         x: -598 * size_factor,
-        //         y: 556 * size_factor,
-        //         cx: -515 * size_factor,
-        //         cy: 485 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }, {
-        //         note: {
-        //             label: "Toya gives his magical powers to Yue (and thus also Yukito) to keep them from disappearing because Sakura doesn't yet have enough magic herself to sustain them",
-        //             title: "Toya's gift",
-        //             wrap: 180 * size_factor,
-        //             padding: 10 * size_factor
-        //         },
-        //         country: 38,
-        //         extra_rad: 50 * size_factor,
-        //         className: "note-left note-story",
-        //         x: -785 * size_factor,
-        //         y: 148 * size_factor,
-        //         cx: -700 * size_factor,
-        //         cy: 12 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }, {
-        //         note: {
-        //             label: "Sakura and Syaoran use their magic together to defeat Eriol's bronze horse",
-        //             title: "Teamwork",
-        //             wrap: 200 * size_factor,
-        //         },
-        //         country: 42,
-        //         extra_rad: 30 * size_factor,
-        //         className: "note-left note-story",
-        //         x: -735 * size_factor,
-        //         y: -366 * size_factor,
-        //         cx: -695 * size_factor,
-        //         cy: -370 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }, {
-        //         note: {
-        //             label: "Sakura 'defeats' Eriol and has now transformed all the Clow cards into Sakura cards",
-        //             title: "The strongest magician",
-        //             wrap: 270 * size_factor,
-        //         },
-        //         country: 44,
-        //         extra_rad: 30 * size_factor,
-        //         className: "note-left note-story",
-        //         x: -596 * size_factor,
-        //         y: -577 * size_factor,
-        //         cx: -593 * size_factor,
-        //         cy: -560 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }, {
-        //         note: {
-        //             label: "Sakura realizes she loves Syaoran the most, right before he leaves for the airport to move back home to Hong Kong",
-        //             title: "True love",
-        //             wrap: 240 * size_factor,
-        //         },
-        //         country: 50,
-        //         extra_rad: 30 * size_factor,
-        //         className: "note-left note-story",
-        //         x: -125 * size_factor,
-        //         y: -660 * size_factor,
-        //         cx: -48 * size_factor,
-        //         cy: -633 * size_factor,
-        //         dx: 5 * size_factor,
-        //         dy: -5 * size_factor
-        //     }];
-
-        //     //Set-up the annotation maker
-        //     var makeAnnotations = d3.annotation()
-        //         //.editMode(true)
-        //         .type(d3.annotationLabel)
-        //         .annotations(annotations);
-
-        //     //Call and create the textual part of the annotations
-        //     var annotation_group = chart.append("g").attr("class", "annotation-group");
-        //     annotation_group.call(makeAnnotations);
-
-        //     //Update a few stylings
-        //     annotation_group.selectAll(".note-line, .connector")
-        //         .style("stroke", "none");
-        //     annotation_group.selectAll(".annotation-note-title")
-        //         .style("fill", "url(#gradient-title)");
-
-        //     //Create my own radially pointing connector lines
-        //     var annotation_connector_group = annotation_group.append("g", "annotation-connectors");
-        //     annotations.forEach(function(d, i) {
-        //         var angle = Math.atan(d.cy / d.cx);
-        //         if (d.cx < 0) angle = -Math.atan(d.cy / -d.cx) + Math.PI;
-        //         annotation_connector_group.append("line")
-        //             .attr("class", "connector-manual " + d.className)
-        //             .attr("x1", d.cx)
-        //             .attr("y1", d.cy)
-        //             .attr("x2", d.cx + d.extra_rad * Math.cos(angle))
-        //             .attr("y2", d.cy + d.extra_rad * Math.sin(angle))
-        //             .style("stroke-width", 2 * size_factor)
-        //             .style("stroke-linecap", "round")
-        //             .style("stroke", color_purple);
-        //     });
-
-        //     //Turn the legend based annotations green
-        //     annotation_group.selectAll(".note-legend .annotation-note-title")
-        //         .style("fill", "url(#gradient-title-legend)");
-        //     annotation_connector_group.selectAll(".note-legend")
-        //         .style("stroke", color_white);
-
-        //     //Add circles to the legend annotations
-        //     var annotation_circle_group = annotation_group.append("g", "annotation-circles");
-        //     //Add circle to first clow card                       
-        //     annotation_circle_group.append("circle")
-        //         .attr("class", "annotation-circle")
-        //         .attr("cx", 50 * size_factor)
-        //         .attr("cy", -655 * size_factor)
-        //         .attr("r", 25 * size_factor);
-
-        //     //Add circle to cover art annotation
-        //     annotation_circle_group.append("circle")
-        //         .attr("class", "annotation-circle")
-        //         .attr("cx", rad_color * Math.cos(country_location_data[5].centerAngle - pi1_2))
-        //         .attr("cy", rad_color * Math.sin(country_location_data[5].centerAngle - pi1_2))
-        //         .attr("r", 38 * size_factor);
-
-        //     //Add circle to first sakura card                       
-        //     annotation_circle_group.append("circle")
-        //         .attr("class", "annotation-circle")
-        //         .attr("cx", -273 * size_factor)
-        //         .attr("cy", 596 * size_factor)
-        //         .attr("r", 25 * size_factor);
-
-        //     annotation_circle_group.selectAll(".annotation-circle")
-        //         .style("stroke-dasharray", "0," + (6 * size_factor))
-        //         .style("stroke-width", 2.5 * size_factor)
-        //         .style("stroke", color_white);
-
-        //     //Make it possible to show/hide the annotations
-        //     var show_annotations = true;
-        //     d3.select("#story-annotation")
-        //         .style("opacity", 1)
-        //         .on("click", spoiler_click);
-
-        //     function spoiler_click() {
-        //         show_annotations = !show_annotations;
-        //         annotation_group.selectAll(".note-story")
-        //             .style("opacity", show_annotations ? 1 : 0);
-        //         d3.select("#hide-show").html(show_annotations ? "hide" : "show");
-        //     } //function spoiler_click
-
-        // } else {
-        //     //Hide the annotation mentions in the intro
-        //     d3.select("#annotation-explanation").style("display", "none");
-        // } //else
-
+        
         ///////////////////////////////////////////////////////////////////////////
         ///////////////////////// Create line title label /////////////////////////
         /////////////////////////////////////////////////////////////////////////// 
@@ -1918,40 +1103,58 @@ function create_GIRAI_chart() {
         ///////////////////////// Create continent name label /////////////////////////
         /////////////////////////////////////////////////////////////////////////// 
 
-        // var continent_label_group = chart.append("g").attr("class", "continent-label-group");
+        var continent_name_group = chart.append("g").attr("class", "continent-name-group");
+        
+        var continent_names_arc = continent_name_group.selectAll(".continent-text-arc")
+            .data(continent_data)
+            .enter().append("path")
+            .attr("class", "continent-text-arc")
+            .attr("id", function(d, i) {
+                return "continent-text-arc-" + i;
+            })
+            .attr("d", function(d, i) {
+                var rad = rad_continent_inner + 5 * size_factor,
+                    xs = rad * Math.cos(d.startAngle - pi1_2),
+                    ys = rad * Math.sin(d.startAngle - pi1_2),
+                    xt = rad * Math.cos(d.endAngle - pi1_2),
+                    yt = rad * Math.sin(d.endAngle - pi1_2)
+                return "M" + xs + "," + ys + " A" + rad + "," + rad + " 0 0 1 " + xt + "," + yt;
+            })
+            .style("fill", "none")
+            .style("stroke", "none");  // Ensure the path is invisible
 
-        // //Define the arc on which to draw the label text
-        // function label_arc(angle) {
-        //     var x1 = rad_line_label * Math.cos(angle + 0.01 - pi1_2),
-        //         y1 = rad_line_label * Math.sin(angle + 0.01 - pi1_2);
-        //     var x2 = rad_line_label * Math.cos(angle - 0.01 - pi1_2),
-        //         y2 = rad_line_label * Math.sin(angle - 0.01 - pi1_2);
-        //     if (angle / Math.PI > 0.5 && angle / Math.PI < 1.5) {
-        //         return "M" + x1 + "," + y1 + " A" + rad_line_label + "," + rad_line_label + " 0 1 1 " + x2 + "," + y2;
-        //     } else {
-        //         return "M" + x2 + "," + y2 + " A" + rad_line_label + "," + rad_line_label + " 0 1 0 " + x1 + "," + y1;
-        //     } //else
-        // } //function label_arc
+        //Create a group per character
+        var continent_names = continent_name_group.selectAll(".continent-name")
+            .data(continent_data)
+            .enter().append("g")
+            .attr("class", "continent-name")
+            .style("text-anchor", function(d) {
+                return d.centerAngle > 0 & d.centerAngle < Math.PI ? "start" : "end";;
+            })
+            .style("font-family", "Barlow")
+            .style("color", function(d) {
+                return d.color;
+            })
 
-        // //Create the paths along which the pillar labels will run
-        // var con_line_label_path = continent_label_group.append("path")
-        //     .attr("class", "con-line-label-path")
-        //     .attr("id", "con-line-label-path")
-        //     .attr("d", label_arc(rad_continent_inner))
-        //     .style("fill", "none")
-        //     .style("display", "none");
-
-        // //Create the label text
-        // var asia_label_text = "Asia";
-        // var line_label = continent_label_group.append("text")
-        //     .attr("class", "line-label")
-        //     .attr("dy", "0.35em")
-        //     .style("text-anchor", "middle")
-        //     .style("font-size", (14 * size_factor) + "px")
-        //     .append("textPath")
-        //     .attr("xlink:href", "#con-line-label-path")
-        //     .attr("startOffset", "50%")
-        //     .text(asia_label_text);
+        // // Add the big "main" name along the arc
+        continent_names.append("text")
+            .attr("class", "continent-name-label")
+            .attr("id", function(d, i) {
+                return "continent-name-label-" + i;
+            })
+            .append("textPath")
+            .attr("href", function(d, i) {
+                return "#continent-text-arc-" + i;
+            })
+            .attr("startOffset", "50%") // Center text along the path
+            .style("text-anchor", "middle")
+            .style("font-size", (12 * size_factor) + "px")
+            .style("fill", function(d) {
+                return d.color;
+            })
+            .text(function(d, i) {
+                return continent_identity_data[i].continent_name;
+            });
 
         ///////////////////////////////////////////////////////////////////////////
         //////////////////// Create issue & country lines /////////////////////
@@ -2099,25 +1302,7 @@ function create_GIRAI_chart() {
         ctx.scale(sf, sf);
     } //function crispyCanvas
 
-    // //Dragging functions for final positioning adjustments
-    // function dragstarted(d) {
-    //     if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-    //     d.fx = d.x;
-    //     d.fy = d.y;
-    // }//function dragstarted
-
-    // function dragged(d) {
-    //     d.fx = d3.event.x;
-    //     d.fy = d3.event.y;
-    // }//function dragged
-
-    // function dragended(d) {
-    //     if (!d3.event.active) simulation.alphaTarget(0);
-    //     d.fx = null;
-    //     d.fy = null;
-    // }//function dragended
-
-} //function create_GIRAI_chart
+  
 
 //////////////////////////////////////////////////////////////
 ////////////////////// Helper functions //////////////////////
