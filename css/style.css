@@ -96,6 +96,52 @@ body {
     font-family: 'Barlow', sans-serif;
 }
 
+/************* explanation *************/
+
+.issue {
+    font-weight: 600;
+}
+
+#issue-1 {
+    color: #192560;
+}
+
+#issue-2 {
+    color: #1D1D58;
+}
+
+#issue-3 {
+    color: #211651;
+}
+
+#issue-4 {
+    color: #250E4A;
+}
+
+#issue-5 {
+    color: #290641;
+}
+
+#issue-6 {
+    color: #370A44;
+}
+
+#issue-7 {
+    color: #52184D;
+}
+
+#issue-8 {
+    color: #6A2455;
+}
+
+#issue-9 {
+    color: #923862;
+}
+
+#issue-10 {
+    color: #B1476D;
+}
+
 
 /************* media queries *************/
 
