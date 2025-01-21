@@ -456,6 +456,7 @@ function create_GIRAI_chart() {
             .attr("startOffset", "50%") // Center text along the path
             .style("text-anchor", "middle")
             .style("font-size", (12 * size_factor) + "px")
+            .style("fill", "black")
             .text(function(d, i) {
                 return issue_total_data[i].first_name;
             });
@@ -475,6 +476,7 @@ function create_GIRAI_chart() {
             
             .style("text-anchor", "middle")
             .style("font-size", (12 * size_factor) + "px")
+            .style("fill", "black")
             .text(function(d, i) {
                 return issue_total_data[i].last_name;
             });
