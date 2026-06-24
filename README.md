@@ -2,6 +2,8 @@
 
 An interactive D3.js visualization exploring the challenges in responsible AI development across the globe based on the Global Index on Responsible AI (GIRAI) 2024.
 
+Live demo: https://girai.netlify.app/
+
 ## Overview
 
 This project presents "Beastly Challenges in Responsible AI and Where to Find Them" - a comprehensive visualization that maps 10 key challenges identified in the GIRAI 2024 report across different countries and continents. The visualization highlights the complexity and diversity of issues that nations face as they navigate the ever-changing landscape of AI ethics and governance.
